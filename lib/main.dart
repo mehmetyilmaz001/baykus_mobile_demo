@@ -1,9 +1,11 @@
 import 'package:baykus_mobile_demo/models/box_types.dart';
+import 'package:baykus_mobile_demo/providers/sensors.dart';
 import 'package:baykus_mobile_demo/widgets/alert_box.dart';
-import 'package:baykus_mobile_demo/widgets/sensor_item.dart';
+//import 'package:baykus_mobile_demo/widgets/sensor_item.dart';
 import 'package:baykus_mobile_demo/widgets/sensors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,11 +13,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-          primarySwatch: Colors.purple, fontFamily: 'RobotoCondensed'),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          value: SensorsProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            primarySwatch: Colors.purple, fontFamily: 'RobotoCondensed'),
+        home: MyHomePage(title: 'Flutter Demo Home Page'),
+      ),
     );
   }
 }
@@ -43,20 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color.fromRGBO(248, 248, 248, 1),
+        appBar: AppBar(title: Text("BAYKUŞ"), backgroundColor: Color.fromRGBO(74, 19, 140, 1),),
         body: Stack(
           children: <Widget>[
-            Positioned(
-              top: 0.0,
-              child: Container(
-                height: 21,
-                width: MediaQuery.of(context).size.width,
-                decoration:
-                    BoxDecoration(color: Color.fromRGBO(74, 19, 140, 1)),
-                child: SizedBox(
-                  height: 10,
-                ),
-              ),
-            ),
+            
             CenterWidget(),
             Positioned(
               bottom: 0.0,

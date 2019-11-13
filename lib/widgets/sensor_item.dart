@@ -34,7 +34,7 @@ class SensorItem extends StatelessWidget {
           SizedBox(
             height: 15,
           ),
-          Text(value),
+          Text(value == null ? "" : value),
           SizedBox(
             height: 15,
           ),
