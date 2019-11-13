@@ -15,7 +15,7 @@ class SensorsProvider with ChangeNotifier{
   ArrowType _arrowType = ArrowType.equals;
 
 
-  int _tempLimit = 26;
+  int _tempLimit = 30;
   Alert _alert = Alert(title: "", type: BoxTypes.succcess);
 
   double get temp{
@@ -52,7 +52,7 @@ class SensorsProvider with ChangeNotifier{
 
       if(_temp == _prevTemp){
         _arrowType = ArrowType.equals;
-        
+
       }else if(_temp > _prevTemp){
         _arrowType = ArrowType.up;
 
